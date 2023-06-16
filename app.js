@@ -1,4 +1,5 @@
 const dotenv = require("dotenv");
+const cors = require('cors');
 const express = require("express");
 const app = express();
 
@@ -7,9 +8,10 @@ const app = express();
 dotenv.config({ path: "./config.env" });
 const port = process.env.PORT;
 
+require("./connection");
 
 
-
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("welcome my root page");
