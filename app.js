@@ -7,7 +7,7 @@ const app = express();
 
 
 dotenv.config({ path: "./config.env" });
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 
 require("./connection");
 
@@ -15,13 +15,6 @@ require("./connection");
 app.use(cors());
 app.use(require("./router/auth"));
 
-// app.get("/", (req, res) => {
-//     res.send("welcome my root page");
-// });
-
-// app.get("/about", (req, res) => {
-//     res.send("welcome my about about page");
-// });
 
 
 

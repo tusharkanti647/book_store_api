@@ -87,12 +87,13 @@ router.get("/addbook", async (req, res) => {
 //book search get path
 //-----------------------------------------------------------------------------
 router.get("/books-search", async (req, res) => {
+    
     try {
         let { searchName, page, sortQue, filters } = req.query;
         searchName = searchName || "";
         page = page - 1 || 0;
         sortQue = sortQue ? sortQue.split(" ") : ["rating", "-1"];
-        filters = filters ? filters.split(" ") : ["story"];
+        filters = filters ? filters.split(" ") : ["Education", "Science", "Commerce", "Engineering"];
         let limit = 8;
 
         let sortBy = {};
@@ -154,12 +155,13 @@ router.get("/basket_badge/count", passport.authenticate('jwt', { session: false 
 //basket update books
 //------------------------------------------------------------------------------------------------
 router.put("/basket/:id", passport.authenticate('jwt', { session: false }), async (req, res) => {
+    
     try {
         if (req.user) {
             const _id = req.params.id;
             const userId = req.user.id;
 
-            const data = await productModel.findOne({ _id: _id });
+            const data = await bookModel.findOne({ _id: _id });
             const pushingData = { ...data._doc, qty: req.body.qty };
             const userdata = await userModel.findOneAndUpdate({ _id: userId }, {
                 $push: {
@@ -173,6 +175,7 @@ router.put("/basket/:id", passport.authenticate('jwt', { session: false }), asyn
             res.status(404).send("please login first");
         }
     } catch (err) {
+        console.log(err);
         res.status(404).send(err);
     }
 },);
