@@ -32,6 +32,7 @@ Ushing Email `tu@gmail.com` Password `tu1234` or you can create account on click
 8.	You can remove any book from cart on click “X” button, clear the cart click on “empty bucket” button or check out click on “checkout” button click.
 9.	If cart is empty its show the page “cart is empty. Add boos in cart” and one button “continue shopping” on click you redirect to books list page.
 10.	In menu button click open model, click on “signout: you now signout my page.
+## if page is not load or give error pliease, reload the page 2-3 time because i am used free survices for my backend, some time when open 1st time my project it will give error or not loaded the page
 
 
 ## Features
